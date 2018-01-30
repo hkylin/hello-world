@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwap type="job">
+	<resource key="job-01" value="com.cfets.cwap.s.job.DemoJob"
+		label="DEMO" desc="0/15 * * * * ?" plugin="cwap-s-job" />
+	<resource key="job-02" value="com.cfets.cm.u.idn.job.NoticeFetchJob"
+		label="Notice获取" desc="0/15 * * * * ?" plugin="cm-u-idn" />
+</cwap>

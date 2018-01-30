@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwap plugin="cwap-u-demo">
+	<authors>
+		<author name="" email="" />
+	</authors>
+	
+	<update author="" since="2.1.1.0" update="">
+		<items>
+			<item desc="里程碑版本更新,创建2.1.1.0版本" source="CWAP" />
+		</items>
+	</update>
+</cwap>

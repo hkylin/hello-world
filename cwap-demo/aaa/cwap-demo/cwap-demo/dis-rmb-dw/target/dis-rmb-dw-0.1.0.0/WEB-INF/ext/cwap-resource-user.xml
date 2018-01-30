@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwap type="user">
+	<!-- 静态用户资源,用于简单登录,参见s-spi/bean/SessionAccount -->
+	<resource key="admin" value="password" label="管理员" type="ROLE.SYS.ADMIN"/>
+	<resource key="user1" value="user1" label="一般用户" type="ROLE.SYS.COMMON"/>
+	<resource key="user2" value="user2" label="一般用户" type="ROLE.SYS.COMMON"/>
+</cwap>

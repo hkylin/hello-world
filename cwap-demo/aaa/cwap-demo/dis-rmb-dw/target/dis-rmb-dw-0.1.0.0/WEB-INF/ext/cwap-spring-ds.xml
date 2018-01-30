@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:ippui="http://infinity.com/bpm/ui/common/uiDefinition" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/jee     
+        http://www.springframework.org/schema/jee/spring-jee-2.5.xsd"
+	default-autowire="byName">
+
+	<context:annotation-config />
+	<!-- 用注解来实现事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<!-- 缺省使用druid数据源 -->
+			<ref bean="data_source_default" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${cwap.ds.dialet}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- after_statement／after_transaction／on_close -->
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.cfets.cwap.s.*.bean</value>
+				<value>com.cfets.cwap.u.*.bean</value>
+				<value>com.cfets.*.s.**.bean</value>
+				<value>com.cfets.*.u.*.bean</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- JNDI数据源 -->
+	<!--<jee:jndi-lookup id="data_source_jndi" jndi-name="jdbcDataSource" resource-ref="true"/> -->
+
+	<!-- druid数据源 -->
+	<bean id="data_source_default" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="driverClassName" value="${cwap.ds.driver}" />
+		<property name="url" value="${cwap.ds.url}" />
+		<property name="username" value="${cwap.ds.username}" />
+		<property name="password" value="${cwap.ds.password}" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${cwap.ds.pool.min}" />
+		<property name="minIdle" value="20" />
+		<property name="maxActive" value="${cwap.ds.pool.max}" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 <property name="validationQuery" value="SELECT 
+			'x'" /> <property name="testWhileIdle" value="true" /> <property name="testOnBorrow" 
+			value="false" /> <property name="testOnReturn" value="false" /> -->
+	</bean>
+</beans>

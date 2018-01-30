@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+
+	<bean id="propertyConfigurer"
+		class="com.cfets.cwap.s.util.spring.SimplePropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/cwap-context.properties</value>
+				<value>/WEB-INF/cwap-context-ext.properties</value>
+				<value>/WEB-INF/cwap-context-deploy.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwapSpringContextAware" class="com.cfets.cwap.s.util.spring.SpringContextAware" />
+
+	<!-- Spring Bean Auto Scan -->
+	<context:component-scan base-package="com.cfets.cwap.s" />
+	<context:component-scan base-package="com.cfets.cwap.u" />
+	<context:component-scan base-package="com.cfets.*.u" />
+	<context:component-scan base-package="com.cfets.*.s" />
+
+	<!-- Import App Spring Context -->
+	<import resource="cwap-spring-context-app.xml" />
+	<import resource="ext/cwap-spring-ds.xml" />
+
+	<!-- import resource="ext/cwap-spring-ws.xml" / -->
+	<!-- import resource="ext/cwap-spring-aop.xml" / -->
+</beans>

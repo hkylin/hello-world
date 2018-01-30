@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwap plugin="cwap-p-dynamic">
+	<authors>
+		<author name="SBQ" email="shenboqing_zh@chinamoney.com.cn" />
+	</authors>
+	
+	<update author="SBQ" since="2.1.0.0" update="2015-08-21">
+		<items>
+			<item desc="里程碑2.1.0.0版本发布,较前版本业务无更改" source="CWAP" />
+			<item desc="Druid增加用户名/密码限制" source="亚太-唐凯">
+				<file src="web.xml" type="M" />
+			</item>
+		</items>
+		<dependency src="cwap-s-spi" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-web" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-job" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-util" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-cache" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-domain" version="2.1.0.0" type="U" />
+		<dependency src="cwap-s-stp" version="2.1.0.0" type="U" />
+	</update>
+	
+	<update author="SBQ" since="2.0.10.0" update="2015-08-17">
+		<items>
+			<item desc="增加样式js/css等" source="CWAP">
+				<file src="assets/common/jquery-base64.js" type="N" />
+				<file src="assets/cwap/cwap-select.css" type="N" />
+				<file src="assets/cwap/cwap-select.js" type="N" />
+				<file src="assets/cwap/cwap-mvc.js" type="U" />
+			</item>
+			<item desc="增加HSQL内存数据库的支持,替换Derby作为缺省数据库" source="CWAP">
+				<file src="WEB-INF/cwap-context.properties" type="U" />
+				<file src="pom.xml" type="U" />
+			</item>
+			<item desc="改进log4j配置，缺省Error级别,cwap-debug/error等日志" source="CWAP">
+				<file src="log4j.properties" type="U" />
+			</item>
+		</items>
+		<dependency src="cwap-s-spi" version="2.0.6.0" type="U" />
+		<dependency src="cwap-s-web" version="2.0.9.0" type="U"/>
+		<dependency src="cwap-s-job" version="2.0.3.0" />
+		<dependency src="cwap-s-util" version="2.0.7.0" type="U"/>
+		<dependency src="cwap-s-cache" version="2.0.1.0" />
+		<dependency src="cwap-s-domain" version="2.0.1.0" />
+		<dependency src="cwap-s-stp" version="2.0.3.0" type="U" />
+	</update>
+	
+	
+	<update author="SBQ" since="2.0.9.0" update="2015-08-06">
+		<items>
+			<item desc="支持 cwap:session标签配置" source="CWAP" />
+			<item desc="cwap-bootbox.js引入" source="CWAP" />
+		</items>
+		<dependency src="cwap-s-spi" version="2.0.5.0" />
+		<dependency src="cwap-s-web" version="2.0.8.0" type="U" />
+		<dependency src="cwap-s-job" version="2.0.3.0" />
+		<dependency src="cwap-s-util" version="2.0.6.0" />
+		<dependency src="cwap-s-cache" version="2.0.1.0" />
+		<dependency src="cwap-s-domain" version="2.0.1.0" />
+		<dependency src="cwap-s-stp" version="2.0.2.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.8.0" update="2015-08-04">
+		<items>
+			<item desc="cwap.role.provider参数支持" source="CWAP" />
+			<item desc="cwap.job.source:CWAP-U-JOB参数支持,参见U实现" source="CWAP" />
+			<item desc="redirect功能实现,参见cwap-s-spi版本" source="CWAP" />
+			<item desc="增加cwap-context-deploy.properties的引用,支持部署级配置" source="亚太:翟羽佳">
+				<file src="WEB-INF/cwap-context-deploy.properties" type="N" />
+			</item>
+			<item desc="增加multipartResolver的声明" source="CWAP">
+				<file src="ext/cwap-spring-mvc.xml" type="M" />
+			</item>
+		</items>
+		<dependency src="cwap-s-spi" version="2.0.5.0" />
+		<dependency src="cwap-s-web" version="2.0.7.0" />
+		<dependency src="cwap-s-job" version="2.0.3.0" />
+		<dependency src="cwap-s-util" version="2.0.6.0" />
+		<dependency src="cwap-s-cache" version="2.0.1.0" />
+		<dependency src="cwap-s-domain" version="2.0.1.0" />
+		<dependency src="cwap-s-stp" version="2.0.2.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.7.0" update="2015-07-30">
+		<items>
+			<item desc="cwap.login.captcha.ignore参数支持" source="DOOR:杨航" />
+			<item desc="支持作业集群" source="CWAP">
+				<file src="WEB-INF/ext/cwap-quartz.properties" type="N" />
+			</item>
+		</items>
+		<dependency src="cwap-s-util" version="2.0.6.0" />
+		<dependency src="cwap-s-web" version="2.0.6.0" />
+		<dependency src="cwap-s-job" version="2.0.2.0" />
+		<dependency src="cwap-s-cache" version="2.0.1.0" />
+		<dependency src="cwap-s-domain" version="2.0.1.0" />
+		<dependency src="cwap-s-spi" version="2.0.3.0" />
+		<dependency src="cwap-s-stp" version="2.0.2.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.6.0" update="2015-07-23">
+		<items>
+			<item desc="cwap.menu.plugins参数支持" source="CWAP"></item>
+			<item desc="cwap.ds.encrypt参数支持" source="CWAP"></item>
+			<item desc="增加对Redis的支持" source="CWAP"></item>
+		</items>
+		<dependency src="cwap-s-util" version="2.0.5.0" />
+		<dependency src="cwap-s-web" version="2.0.5.0" />
+		<dependency src="cwap-s-cache" version="2.0.1.0" />
+		<dependency src="cwap-s-domain" version="2.0.1.0" />
+		<dependency src="cwap-s-job" version="2.0.0.0" />
+		<dependency src="cwap-s-spi" version="2.0.3.0" />
+		<dependency src="cwap-s-stp" version="2.0.2.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.5.0" update="2015-07-17">
+		<items>
+			<item desc="基础S包引入" source="CWAP"></item>
+		</items>
+		<dependency src="cwap-s-util" version="2.0.4.0" />
+		<dependency src="cwap-s-web" version="2.0.4.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.4.0" update="2015-07-15">
+		<items>
+			<item desc="增加对CwapScan的配置" source="CWAP">
+				<file src="webapp/web.xml" type="M" />
+			</item>
+			<item desc="基础S包引入" source="CWAP">
+			</item>
+		</items>
+		<dependency src="cwap-s-util" version="2.0.3.0" />
+		<dependency src="cwap-s-web" version="2.0.3.0" />
+	</update>
+
+	<update author="SBQ" since="2.0.3.0" update="2015-07-14">
+		<items>
+			<item desc="增加对RestFilter的配置" source="CWAP">
+				<file src="webapp/web.xml" type="M" />
+			</item>
+		</items>
+	</update>
+
+	<update author="SBQ" since="2.0.2.0" update="2015-07-09">
+		<items>
+			<item desc="增加对echarts的支持" source="CWAP">
+				<file src="assets/common/echarts-all.js" />
+				<file src="assets/cwap/cwap-echarts.js" />
+			</item>
+		</items>
+	</update>
+
+	<update author="SBQ" since="2.0.1.0" update="2015-07-08">
+		<items>
+			<item desc="更新cwap-chart.js颜色" source="CWAP">
+				<file src="webapp/assets/cwap/cwap-chart.js" type="U" />
+			</item>
+			<item desc="各基础包版本引入更新" source="CWAP" />
+		</items>
+	</update>
+
+	<update author="SBQ" since="2.0.0.0" update="2015-06-23">
+		<items>
+			<item desc="里程碑版本更新,创建2.0.0.0版本" source="CWAP" />
+		</items>
+	</update>
+</cwap>
