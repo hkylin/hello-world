@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<cwap type="config">
-	<resource key="app.title" value="CWAP APP" label="应用名称"
-		operation="TEXT" desc="" plugin="cwap-u-config" />
-</cwap>
